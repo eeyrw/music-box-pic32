@@ -42,7 +42,7 @@
 
 
 .equ ENVELOP_LEN,256
-.equ POLY_NUM,16
+.equ POLY_NUM,32
 .equ pMixOut,SoundUnitSize*POLY_NUM
 .equ pLastSoundUnit,pMixOut+4
 
@@ -120,7 +120,7 @@ li t5,150
 mul mixOut,t5,mixOut //pre vol
 sra mixOut,mixOut,8
 
-li t5,-32767
+li t5,-32768
 bge mixOut,t5,saturateLowerBoundSatisfied
 move mixOut,t5
 saturateLowerBoundSatisfied:
