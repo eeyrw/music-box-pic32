@@ -110,10 +110,6 @@ void InitializeSystem(void)
     PORTBbits.RB4 = 1;
     INTEnableSystemMultiVectoredInt();
 
-    // Fill all buffers first at start.
-    generate_sine(&buffer_a[0]);
-    generate_sine(&buffer_b[0]);
-
     delay_ms(5);
 
     init_i2s1();
