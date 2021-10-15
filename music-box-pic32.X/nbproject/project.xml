@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>com.microchip.mplab.nbide.embedded.makeproject</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/make-project/1">
+            <name>music-box-pic32</name>
+            <creation-uuid>dfe3f066-1516-4e93-82e3-3837d9208d59</creation-uuid>
+            <make-project-type>0</make-project-type>
+            <c-extensions>c</c-extensions>
+            <cpp-extensions/>
+            <header-extensions>h</header-extensions>
+            <asminc-extensions/>
+            <sourceEncoding>GBK</sourceEncoding>
+            <make-dep-projects/>
+            <sourceRootList>
+                <sourceRootElem>..</sourceRootElem>
+                <sourceRootElem>..\..\..\..\Microchip\Help</sourceRootElem>
+                <sourceRootElem>..\..\..\..\Microchip\Include\USB</sourceRootElem>
+                <sourceRootElem>..\..\..\..\Microchip\USB</sourceRootElem>
+                <sourceRootElem>..\..\..\..\Microchip\Include</sourceRootElem>
+                <sourceRootElem>..\..\..\Microchip\Help</sourceRootElem>
+                <sourceRootElem>..\..\..\Microchip\Include\USB</sourceRootElem>
+                <sourceRootElem>..\..\..\Microchip\USB</sourceRootElem>
+                <sourceRootElem>..\..\..\Microchip\Include</sourceRootElem>
+            </sourceRootList>
+            <confList>
+                <confElem>
+                    <name>default</name>
+                    <type>2</type>
+                </confElem>
+            </confList>
+            <formatting>
+                <project-formatting-style>false</project-formatting-style>
+            </formatting>
+        </data>
+    </configuration>
+</project>

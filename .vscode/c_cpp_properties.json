@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "xc32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/../../../Microchip/Include",
+                "${workspaceFolder}/../../../Microchip/USB",
+                "${workspaceFolder}/../../../Microchip/Include/USB"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.17763.0",
+            "cStandard": "c99",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "${default}"
+        }
+    ],
+    "version": 4
+}
