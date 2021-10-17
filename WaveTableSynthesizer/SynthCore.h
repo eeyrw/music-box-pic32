@@ -17,16 +17,14 @@ typedef struct _SoundUnit
 	int32_t val;
 	int32_t sampleVal;
 	uint32_t envelopeLevel;
-}SoundUnit;
-
-
+} SoundUnit;
 
 typedef struct _Synthesizer
 {
-    SoundUnit SoundUnitList[POLY_NUM];
+	SoundUnit SoundUnitList[POLY_NUM];
 	int32_t mixOut;
-    uint32_t lastSoundUnit;
-}Synthesizer;
+	uint32_t lastSoundUnit;
+} Synthesizer;
 
 typedef struct _SampleInfo
 {
@@ -38,7 +36,7 @@ typedef struct _SampleInfo
 	uint32_t sampleLen;
 	uint32_t sampleLoopStart;
 	uint32_t sampleLoopLen;
-}SampleInfo;
+} SampleInfo;
 
 typedef struct _InstrumentInfo
 {
@@ -46,20 +44,18 @@ typedef struct _InstrumentInfo
 	uint8_t sampleNum;
 	uint32_t sampleBaseAddr;
 	SampleInfo *samples;
-}InstrumentInfo;
+} InstrumentInfo;
 
-
-extern void SynthInit(Synthesizer* synth);
+extern void SynthInit(Synthesizer *synth);
 
 //#ifdef RUN_TEST
-extern void NoteOnC(Synthesizer* synth,uint8_t note);
-extern void SynthC(Synthesizer* synth);
-extern void GenDecayEnvlopeC(Synthesizer* synth);
+extern void NoteOnC(Synthesizer *synth, uint8_t note);
+extern void SynthC(Synthesizer *synth);
+extern void GenDecayEnvlopeC(Synthesizer *synth);
 //#endif
 
-extern void NoteOnAsm(Synthesizer* synth,uint8_t note);
-extern void GenDecayEnvlopeAsm(Synthesizer* synth);
-extern void SynthAsm(Synthesizer* synth);
-
+extern void NoteOnAsm(Synthesizer *synth, uint8_t note);
+extern void GenDecayEnvlopeAsm(Synthesizer *synth);
+extern void SynthAsm(Synthesizer *synth);
 
 #endif

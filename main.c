@@ -101,9 +101,9 @@ void synth_wave(short *buffer_pp, int len)
     {
         Player32kProc(&mPlayer);
         buffer_pp[i] = mPlayer.mainSynthesizer.mixOut;
-        buffer_pp[i+1]=mPlayer.mainSynthesizer.mixOut;
+        buffer_pp[i + 1] = mPlayer.mainSynthesizer.mixOut;
     }
-    OC1R=-(long)buffer_pp[0];
+    OC1R = -(long)buffer_pp[0];
     PORTBbits.RB15 = 0;
 }
 
