@@ -10,7 +10,7 @@ void Player32kProc(Player *player)
 {
     SynthAsm(&(player->mainSynthesizer));
     player->currentTick++;
-    if(player->decayGenTick<200)
+    if(player->decayGenTick<100)
          player->decayGenTick+=1;
 }
 
@@ -19,7 +19,7 @@ void PlayerProcess(Player *player)
 
     uint8_t temp;
 
-    if (player->decayGenTick >= 150)
+    if (player->decayGenTick >= 100)
     {
         GenDecayEnvlopeAsm(&(player->mainSynthesizer));
         player->decayGenTick = 0;
