@@ -40,9 +40,8 @@
         <itemPath>../WaveTableSynthesizer/Player.c</itemPath>
         <itemPath>../WaveTableSynthesizer/score.c</itemPath>
         <itemPath>../WaveTableSynthesizer/SynthCore.c</itemPath>
-        <itemPath>../WaveTableSynthesizer/WaveTable_Celesta_C5.c</itemPath>
-        <itemPath>../WaveTableSynthesizer/WaveTable_Celesta_C6.c</itemPath>
         <itemPath>../WaveTableSynthesizer/Synth_mips.S</itemPath>
+        <itemPath>../WaveTableSynthesizer/WaveTable.c</itemPath>
       </logicalFolder>
       <itemPath>../usb_descriptors.c</itemPath>
       <itemPath>../main.c</itemPath>

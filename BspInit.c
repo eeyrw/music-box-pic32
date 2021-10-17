@@ -92,11 +92,11 @@ void InitializeSystem(void)
     RPC0R = 0b0101; //PWM OC1 on PC0
 
     /* Open Timer2 with Period register value */
-    OpenTimer2(T2_ON, 0x550);
+    OpenTimer2(T2_ON, 0xFFFF);
 
     /* Enable OC | 32 bit Mode  | Timer2 is selected | Continuous O/P   | OC Pin High , S Compare value, Compare value*/
-    OpenOC1(OC_ON | OC_TIMER_MODE32 | OC_TIMER2_SRC | OC_CONTINUE_PULSE | OC_LOW_HIGH, 0x550, 0x100);
-    OpenOC2(OC_ON | OC_TIMER_MODE32 | OC_TIMER2_SRC | OC_CONTINUE_PULSE | OC_LOW_HIGH, 0x550, 0x500);
+    OpenOC1(OC_ON | OC_TIMER_MODE32 | OC_TIMER2_SRC | OC_CONTINUE_PULSE | OC_LOW_HIGH, 0xFFFF, 50000);
+    OpenOC2(OC_ON | OC_TIMER_MODE32 | OC_TIMER2_SRC | OC_CONTINUE_PULSE | OC_LOW_HIGH, 0xFFFF, 90);
     /*
       The expected output looks like the diagram below with approximately 6% duty-cycle
 

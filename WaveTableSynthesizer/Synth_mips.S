@@ -1,5 +1,5 @@
 #include <xc.h>
-
+#include "WaveTable.h"
 
 
 //.set noreorder
@@ -45,14 +45,6 @@
 .equ POLY_NUM,32
 .equ pMixOut,SoundUnitSize*POLY_NUM
 .equ pLastSoundUnit,pMixOut+4
-
-.equ WAVETABLE_CELESTA_C5_LEN,2608
-.equ WAVETABLE_CELESTA_C5_ATTACK_LEN,1998
-.equ WAVETABLE_CELESTA_C5_LOOP_LEN,610
-
-.equ  WAVETABLE_CELESTA_C6_LEN, 1358
-.equ  WAVETABLE_CELESTA_C6_ATTACK_LEN, 838
-.equ  WAVETABLE_CELESTA_C6_LOOP_LEN, 520
 
 
 .section .text
@@ -187,12 +179,12 @@ move pSynth,a0
 //     SoundUnit* soundUnits = synth->SoundUnitList//
 
 //     //disable_interrupts()//
-//     soundUnits[lastSoundUnit].increment = WaveTable_Celesta_C5_Increment[note&0x7F]//
+//     soundUnits[lastSoundUnit].increment = WaveTable_Increment[note&0x7F]//
 //     soundUnits[lastSoundUnit].wavetablePos = 0//
-//     soundUnits[lastSoundUnit].waveTableAddress = (uint32_t)WaveTable_Celesta_C5//
-//     soundUnits[lastSoundUnit].waveTableLen = WAVETABLE_CELESTA_C5_LEN//
-//     soundUnits[lastSoundUnit].waveTableLoopLen = WAVETABLE_CELESTA_C5_LOOP_LEN//
-//     soundUnits[lastSoundUnit].waveTableAttackLen = WAVETABLE_CELESTA_C5_ATTACK_LEN//
+//     soundUnits[lastSoundUnit].waveTableAddress = (uint32_t)WaveTable//
+//     soundUnits[lastSoundUnit].waveTableLen = WAVETABLE_LEN//
+//     soundUnits[lastSoundUnit].waveTableLoopLen = WAVETABLE_LOOP_LEN//
+//     soundUnits[lastSoundUnit].waveTableAttackLen = WAVETABLE_ATTACK_LEN//
 //     //enable_interrupts()//
 
 //     lastSoundUnit++//
@@ -210,7 +202,7 @@ add pSynth,pSynth,t5
 li t5,0x7F
 and note,note,t5
 sll note,note,1
-la t5,WaveTable_Celesta_C5_Increment
+la t5,WaveTable_Increment
 add t5,t5,note
 lhu t5,(t5)
 
@@ -220,13 +212,13 @@ di
 sw t5,pIncrement(pSynth)
 move t5,zero
 sw t5,pWavetablePos(pSynth)
-la t5,WaveTable_Celesta_C5
+la t5,WaveTable
 sw t5,pWaveTableAddress(pSynth)
-li t5,WAVETABLE_CELESTA_C5_LEN
+li t5,WAVETABLE_LEN
 sw t5,pWaveTableLen(pSynth)
-li t5,WAVETABLE_CELESTA_C5_LOOP_LEN
+li t5,WAVETABLE_LOOP_LEN
 sw t5,pWaveTableLoopLen(pSynth)
-li t5,WAVETABLE_CELESTA_C5_ATTACK_LEN
+li t5,WAVETABLE_ATTACK_LEN
 sw t5,pWaveTableAttackLen(pSynth)
 sw zero,pEnvelopePos(pSynth)
 li t5,255
