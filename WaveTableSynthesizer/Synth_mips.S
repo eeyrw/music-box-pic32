@@ -45,7 +45,7 @@
 .equ POLY_NUM,32
 .equ pMixOut,SoundUnitSize*POLY_NUM
 .equ pLastSoundUnit,pMixOut+4
-
+.equ pVolume,pLastSoundUnit+4
 
 .section .text
 .ent SynthAsm
@@ -73,7 +73,16 @@ loopSynth:
     srl  t6,t6,8 //wavetablePos /= 256
     sll  t6,t6,1 //wavetablePos *= 2
     add t6,t5,t6  // Load signed 16bit sample to t6
-    lh t6,(t6) //
+    addi t7,t6,2    // Load 2nd signed 16bit sampleaddr
+    lh t6,(t6) 
+    lh t7,(t7)
+    sub t7,t7,t6
+    lbu t5,pWavetablePos(pSoundUnit)
+    mflo mixOut
+    mul t7,t7,t5
+    mtlo mixOut
+    sra  t7,t7,8 //wavetablePos /= 256
+    add t6,t6,t7
     sw t6,pSampleVal(pSoundUnit)
  
     #ifdef USE_MADD
@@ -112,6 +121,12 @@ li t5,150
 mul mixOut,t5,mixOut //pre vol
 sra mixOut,mixOut,8
 
+move pSoundUnit,a0
+lh t6,pVolume(pSoundUnit)
+mul mixOut,t6,mixOut //main vol
+sra mixOut,mixOut,10
+
+
 li t5,-32768
 bge mixOut,t5,saturateLowerBoundSatisfied
 move mixOut,t5
@@ -120,7 +135,6 @@ li t5,32767
 ble mixOut,t5,saturateEnd
 move mixOut,t5
 saturateEnd:
-move pSoundUnit,a0
 sw mixOut,pMixOut(pSoundUnit)
 
 

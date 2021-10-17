@@ -24,6 +24,7 @@ typedef struct _Synthesizer
 	SoundUnit SoundUnitList[POLY_NUM];
 	int32_t mixOut;
 	uint32_t lastSoundUnit;
+    uint16_t volume;
 } Synthesizer;
 
 typedef struct _SampleInfo

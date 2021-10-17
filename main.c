@@ -97,6 +97,8 @@ void synth_wave(short *buffer_pp, int len)
 {
     PORTBbits.RB15 = 1;
 
+    mPlayer.mainSynthesizer.volume = ReadADC10(0);
+
     for (int i = 0; i < len; i += 2)
     {
         Player32kProc(&mPlayer);
