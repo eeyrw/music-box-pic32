@@ -51,7 +51,37 @@ Player mPlayer;
 void BlinkUSBStatus(void);
 void ProcessIO(void);
 void UserInit(void);
+#define ONE_FIX_POINT 255
+int lastGain = ONE_FIX_POINT;
+#define timeConstAttack 10
+#define timeConstRelease 200
+int lastPeak = 0;
+int compressEffect(int sampleIn,int threshold)
+{
+	int currentGain;
+	int currentPeak;
+	if (abs(sampleIn) > threshold)
+	{
+		currentGain = threshold * ONE_FIX_POINT / abs(sampleIn);
+	}
+	else
+	{
+		currentGain = ONE_FIX_POINT;
+	}
+	currentPeak = currentGain;
 
+	if (lastPeak > currentPeak)
+	{
+		currentPeak = (timeConstAttack*lastPeak + (ONE_FIX_POINT-timeConstAttack) *currentGain)/ ONE_FIX_POINT;
+	}
+	else
+	{
+		currentPeak = (timeConstRelease*lastPeak + (ONE_FIX_POINT - timeConstRelease) *currentGain) / ONE_FIX_POINT;
+	}
+	lastPeak = currentPeak;
+
+	return sampleIn * currentPeak / ONE_FIX_POINT;
+}
 /********************************************************************
  * Function:        void main(void)
  *
@@ -102,10 +132,23 @@ void synth_wave(short *buffer_pp, int len)
     for (int i = 0; i < len; i += 2)
     {
         Player32kProc(&mPlayer);
-        buffer_pp[i] = mPlayer.mainSynthesizer.mixOut;
-        buffer_pp[i + 1] = mPlayer.mainSynthesizer.mixOut;
+
+
+		int32_t rawSynthOutput = mPlayer.mainSynthesizer.mixOut;
+		//rawSynthOutput = compressEffect(rawSynthOutput, 31000);
+		if (rawSynthOutput < -32768)
+		{
+			rawSynthOutput = -32768;
+		}	
+		else if (rawSynthOutput > 32767)
+		{
+			rawSynthOutput = 32767;
+		}
+        
+        buffer_pp[i] = rawSynthOutput;
+        buffer_pp[i + 1] = rawSynthOutput;
     }
-    OC1R = -(long)buffer_pp[0];
+    OC1R = abs(buffer_pp[0]);
     PORTBbits.RB15 = 0;
 }
 

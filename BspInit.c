@@ -95,8 +95,8 @@ void InitializeSystem(void)
     OpenTimer2(T2_ON, 0xFFFF);
 
     /* Enable OC | 32 bit Mode  | Timer2 is selected | Continuous O/P   | OC Pin High , S Compare value, Compare value*/
-    OpenOC1(OC_ON | OC_TIMER_MODE32 | OC_TIMER2_SRC | OC_CONTINUE_PULSE | OC_LOW_HIGH, 0xFFFF, 50000);
-    OpenOC2(OC_ON | OC_TIMER_MODE32 | OC_TIMER2_SRC | OC_CONTINUE_PULSE | OC_LOW_HIGH, 0xFFFF, 90);
+    OpenOC1(OC_ON | OC_TIMER_MODE32 | OC_TIMER2_SRC | OC_CONTINUE_PULSE | OC_LOW_HIGH , 0xFFFF, 0x0000);
+    OpenOC2(OC_ON | OC_TIMER_MODE32 | OC_TIMER2_SRC | OC_CONTINUE_PULSE | OC_LOW_HIGH, 0xFFFF, 1);
     /*
       The expected output looks like the diagram below with approximately 6% duty-cycle
 
