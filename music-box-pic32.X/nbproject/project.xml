@@ -14,14 +14,6 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>..</sourceRootElem>
-                <sourceRootElem>..\..\..\..\Microchip\Help</sourceRootElem>
-                <sourceRootElem>..\..\..\..\Microchip\Include\USB</sourceRootElem>
-                <sourceRootElem>..\..\..\..\Microchip\USB</sourceRootElem>
-                <sourceRootElem>..\..\..\..\Microchip\Include</sourceRootElem>
-                <sourceRootElem>..\..\..\Microchip\Help</sourceRootElem>
-                <sourceRootElem>..\..\..\Microchip\Include\USB</sourceRootElem>
-                <sourceRootElem>..\..\..\Microchip\USB</sourceRootElem>
-                <sourceRootElem>..\..\..\Microchip\Include</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
